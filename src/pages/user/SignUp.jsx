@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserForm from '../common/UserForm';
+import UserForm from '../../components/common/user/UserForm';
 
-export default function SignIn() {
+export default function SignUp(props) {
   const navigate = useNavigate();
 
   function addSignUpHandler(formData) {
-    fetch('http://localhost:5000/signin', {
+    fetch('http://localhost:5000/signup', {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {
@@ -15,7 +15,7 @@ export default function SignIn() {
       },
     })
       .then(() => {
-        navigate('/contacts', { replace: true });
+        navigate('/signin', { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -24,7 +24,7 @@ export default function SignIn() {
 
   return (
     <section>
-      <UserForm onAddMeetup={addSignUpHandler} type="Sign In" />
+      <UserForm onSubmit={addSignUpHandler} type="Sign Up" />
     </section>
   );
 }

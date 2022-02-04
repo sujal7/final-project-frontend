@@ -1,9 +1,8 @@
 .form {
+  display: block;
   padding: 1rem;
-  margin: 0px auto;
-  width: 20%;
+  margin: 0px 20px;
 }
-
 .control {
   margin-bottom: 0.5rem;
 }

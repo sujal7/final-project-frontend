@@ -1,9 +1,9 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import UserForm from './components/common/UserForm';
-import SignUp from './components/signup/SignUp';
-import SignIn from './components/signin/SignIn';
+import SignUp from './pages/user/SignUp';
+import SignIn from './pages/user/SignIn';
+import AllContacts from './pages/contacts/AllContacts';
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/contacts" element={<AllContacts />} />
         </Routes>
       </Layout>
     </div>

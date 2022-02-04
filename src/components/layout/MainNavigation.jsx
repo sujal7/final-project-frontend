@@ -10,6 +10,9 @@ export default function MainNavigation() {
       <nav>
         <ul>
           <li>
+            <Link to="/contacts">Contacts</Link>
+          </li>
+          <li>
             <Link to="/signin">Sign In</Link>
           </li>
           <li>
