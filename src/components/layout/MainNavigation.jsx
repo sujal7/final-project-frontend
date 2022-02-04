@@ -13,6 +13,9 @@ export default function MainNavigation() {
             <Link to="/contacts">Contacts</Link>
           </li>
           <li>
+            <Link to="/add-contacts">Add Contacts</Link>
+          </li>
+          <li>
             <Link to="/signin">Sign In</Link>
           </li>
           <li>

@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout';
 import SignUp from './pages/user/SignUp';
 import SignIn from './pages/user/SignIn';
 import AllContacts from './pages/contacts/AllContacts';
+import AddContacts from './pages/contacts/AddContacts';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/contacts" element={<AllContacts />} />
+          <Route path="/add-contacts" element={<AddContacts />} />
         </Routes>
       </Layout>
     </div>

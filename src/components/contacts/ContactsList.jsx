@@ -8,6 +8,7 @@ export default function ContactsList(props) {
     <ul className={classes.list}>
       {props.contacts.map((contact) => (
         <ContactItem
+          key={contact._id}
           id={contact._id}
           name={contact.name}
           phone={contact.phone}
