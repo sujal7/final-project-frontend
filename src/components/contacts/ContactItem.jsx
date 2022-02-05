@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function ContactItem(props) {
   const navigate = useNavigate();
   function deleteHandler() {
-    props.onDelete(props.id);
+    navigate(`/delete-contacts/${props.id}`, { replace: true });
   }
 
   function editHandler() {

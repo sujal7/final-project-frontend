@@ -17,7 +17,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/contacts" element={<AllContacts />} />
           <Route path="/add-contacts" element={<AddContacts />} />
-          <Route path="/delete-contacts/" element={<DeleteContacts />} />
+          <Route path="/delete-contacts/:id" element={<DeleteContacts />} />
           <Route path="/edit-contacts/:id" element={<EditContacts />} />
         </Routes>
       </Layout>
