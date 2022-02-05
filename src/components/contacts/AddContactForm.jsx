@@ -24,7 +24,11 @@ export default function AddContactForm(props) {
       email: enteredEmail,
     };
 
-    props.onAddContacts(formData);
+    if (props.isEdit) {
+      props.onEditContacts(formData);
+    } else {
+      props.onAddContacts(formData);
+    }
   }
 
   return (

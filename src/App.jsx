@@ -6,6 +6,7 @@ import SignIn from './pages/user/SignIn';
 import AllContacts from './pages/contacts/AllContacts';
 import AddContacts from './pages/contacts/AddContacts';
 import DeleteContacts from './pages/contacts/DeleteContacts';
+import EditContacts from './pages/contacts/EditContacts';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/contacts" element={<AllContacts />} />
           <Route path="/add-contacts" element={<AddContacts />} />
           <Route path="/delete-contacts/" element={<DeleteContacts />} />
+          <Route path="/edit-contacts/:id" element={<EditContacts />} />
         </Routes>
       </Layout>
     </div>

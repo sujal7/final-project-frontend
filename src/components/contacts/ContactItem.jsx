@@ -2,10 +2,18 @@ import React from 'react';
 
 import Card from '../common/ui/Card';
 import classes from './ContactItem.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function ContactItem(props) {
+  const navigate = useNavigate();
   function deleteHandler() {
     props.onDelete(props.id);
+  }
+
+  function editHandler() {
+    navigate(`/edit-contacts/${props.id}`, {
+      replace: true,
+    });
   }
 
   return (
@@ -19,7 +27,7 @@ export default function ContactItem(props) {
         </div>
         <div className={classes.actions}>
           <button>Favorite</button>
-          <button>Edit</button>
+          <button onClick={editHandler}>Edit</button>
           <button onClick={deleteHandler}>Delete</button>
         </div>
       </Card>
