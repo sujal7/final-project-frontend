@@ -7,7 +7,11 @@ export default function AllContacts() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('http://localhost:5000/contacts')
+    fetch('http://localhost:5000/contacts', {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
       .then((response) => {
         return response.json();
       })

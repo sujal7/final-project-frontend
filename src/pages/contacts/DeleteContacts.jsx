@@ -7,6 +7,9 @@ export default function DeleteContacts() {
 
   fetch(`http://localhost:5000/contacts/${id}`, {
     method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
   })
     .then(() => {
       navigate('/contacts', { replace: true });

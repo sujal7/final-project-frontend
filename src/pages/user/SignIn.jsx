@@ -9,11 +9,14 @@ export default function SignIn() {
     fetch('http://localhost:5000/signin', {
       method: 'POST',
       body: JSON.stringify(formData),
-      headers: {
-        // we pass authorization tokens in header
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        localStorage.setItem('token', resData.token);
+      })
       .then(() => {
         navigate('/contacts', { replace: true });
       })

@@ -9,6 +9,7 @@ import DeleteContacts from './pages/contacts/DeleteContacts';
 import EditContacts from './pages/contacts/EditContacts';
 
 function App() {
+  // localStorage.removeItem('token');
   return (
     <div>
       <Layout>
