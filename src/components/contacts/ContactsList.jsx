@@ -12,7 +12,9 @@ export default function ContactsList(props) {
           id={contact._id}
           name={contact.name}
           photo={contact.photo}
-          phone={contact.phone}
+          mobileNumber={contact.phone.mobileNumber}
+          workNumber={contact.phone.workNumber}
+          homeNumber={contact.phone.homeNumber}
           address={contact.address}
           email={contact.email}
         />

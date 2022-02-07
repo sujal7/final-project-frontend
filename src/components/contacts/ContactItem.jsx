@@ -21,9 +21,11 @@ export default function ContactItem(props) {
       <Card>
         <div className={classes.content}>
           <h3>{props.name}</h3>
-          <img src={props.photo} alt="Contact Photo" />
+          <img src={props.photo} alt="Contacts" />
           <address>{props.address}</address>
-          <p>{props.phone}</p>
+          <p>{props.mobileNumber ? props.mobileNumber : 'Not Availabe'}</p>
+          <p>{props.workNumber ? props.workNumber : 'Not Availabe'}</p>
+          <p>{props.homeNumber ? props.homeNumber : 'Not Availabe'}</p>
           <p>{props.email}</p>
         </div>
         <div className={classes.actions}>
