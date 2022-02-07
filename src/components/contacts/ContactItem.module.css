@@ -10,11 +10,6 @@
   border-top-left-radius: 6px;
 }
 
-.image img {
-  width: 100%;
-  object-fit: cover;
-}
-
 .content {
   text-align: center;
   padding: 1rem;
@@ -23,6 +18,11 @@
 .content h3 {
   font-size: 1.25rem;
   color: #2c292b;
+}
+
+.content img {
+  width: 50px;
+  height: 50px;
 }
 
 .actions {

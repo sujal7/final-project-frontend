@@ -1,9 +1,9 @@
 import { useRef } from 'react';
+import { useState } from 'react';
 
 import Card from '../common/ui/Card';
 
 import classes from './AddContactForm.module.css';
-
 export default function AddContactForm(props) {
   const nameInputRef = useRef();
   const addressInputRef = useRef();
@@ -12,6 +12,9 @@ export default function AddContactForm(props) {
 
   function submitHandler(event) {
     event.preventDefault();
+
+    const file = event.target[1].files[0];
+
     const enteredName = nameInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     const enteredContact = phoneInputRef.current.value;
@@ -25,9 +28,9 @@ export default function AddContactForm(props) {
     };
 
     if (props.isEdit) {
-      props.onEditContacts(formData);
+      props.onEditContacts(formData, file);
     } else {
-      props.onAddContacts(formData);
+      props.onAddContacts(formData, file);
     }
   }
 
@@ -38,6 +41,12 @@ export default function AddContactForm(props) {
           <label htmlFor="name">Name</label>
           <input type="text" required id="name" ref={nameInputRef} />
         </div>
+
+        <div className={classes.control}>
+          <label htmlFor="photo">Photo</label>
+          <input type="file" required id="photo" />
+        </div>
+
         <div className={classes.control}>
           <label htmlFor="address">Address</label>
           <input type="text" required id="address" ref={addressInputRef} />

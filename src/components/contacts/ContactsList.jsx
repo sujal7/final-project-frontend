@@ -11,6 +11,7 @@ export default function ContactsList(props) {
           key={contact._id}
           id={contact._id}
           name={contact.name}
+          photo={contact.photo}
           phone={contact.phone}
           address={contact.address}
           email={contact.email}
