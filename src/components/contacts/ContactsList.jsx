@@ -2,8 +2,11 @@ import React from 'react';
 
 import classes from './ContactsList.module.css';
 import ContactItem from './ContactItem';
+import sortContacts from '../../utils/sortContacts';
 
 export default function ContactsList(props) {
+  sortContacts(props.contacts);
+
   return (
     <ul className={classes.list}>
       {props.contacts.map((contact) => (
