@@ -17,6 +17,14 @@ export default function ContactItem(props) {
   function editHandler() {
     navigate(`/edit-contacts/${props.id}`, {
       replace: true,
+      state: {
+        name: props.name,
+        mobileNumber: props.mobileNumber,
+        workNumber: props.workNumber,
+        homeNumber: props.homeNumber,
+        address: props.address,
+        email: props.email,
+      },
     });
   }
 
@@ -66,15 +74,17 @@ export default function ContactItem(props) {
         <div className={classes.content}>
           <h3>{props.name}</h3>
           <img src={props.photo} alt="Contacts" />
-          <address>{props.address}</address>
-          <p>{props.mobileNumber ? props.mobileNumber : 'Not Availabe'}</p>
-          <p>{props.workNumber ? props.workNumber : 'Not Availabe'}</p>
-          <p>{props.homeNumber ? props.homeNumber : 'Not Availabe'}</p>
-          <p>{props.email}</p>
+          <address>Address: {props.address}</address>
+          <p>
+            Mobile Number: {props.mobileNumber ? props.mobileNumber : 'N/A'}
+          </p>
+          <p>Work Number: {props.workNumber ? props.workNumber : 'N/A'}</p>
+          <p>Home Number: {props.homeNumber ? props.homeNumber : 'N/A'}</p>
+          <p>Email: {props.email}</p>
         </div>
         <div className={classes.actions}>
           {isFavorite(props.id) ? (
-            <button onClick={removeFavoriteHandler}>Remove Favorite</button>
+            <button onClick={removeFavoriteHandler}>Unfavorite</button>
           ) : (
             <button onClick={addFavoriteHandler}>Favorite</button>
           )}

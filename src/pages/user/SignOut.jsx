@@ -6,7 +6,7 @@ export default function SignOut() {
   dispatch({ type: 'LOGOUT' });
 
   return (
-    <h1>
+    <h1 className="center">
       You have been signed out.
       <br />
       <Link to="/signin">Click Here </Link>to Sign In

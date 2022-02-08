@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 import AddContactForm from '../../components/contacts/AddContactForm';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
@@ -27,7 +27,6 @@ export default function EditContacts() {
         (error) => console.log(error),
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log('File available at', downloadURL);
             setUrl(downloadURL);
             resolve(downloadURL);
           });
@@ -56,7 +55,7 @@ export default function EditContacts() {
 
   return (
     <section>
-      <h1>Edit Contact</h1>
+      <h1 className="center primary-color">Edit Contact</h1>
       <AddContactForm onEditContacts={editContactsHandler} isEdit={true} />
     </section>
   );

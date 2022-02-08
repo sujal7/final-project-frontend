@@ -13,8 +13,10 @@
 }
 
 .content img {
-  width: 90px;
+  width: 120px;
   height: 120px;
+  margin-bottom: 20px;
+  border-radius: 50%;
 }
 
 .actions {
@@ -30,6 +32,7 @@
   background-color: transparent;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
+  margin: 0 5px;
 }
 
 .actions button:hover,

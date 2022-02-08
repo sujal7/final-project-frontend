@@ -26,7 +26,7 @@ export default function AllContacts() {
   if (isLoading) {
     return (
       <section>
-        <p>Loading...</p>
+        <p className="center">Loading...</p>
       </section>
     );
   }
@@ -35,7 +35,9 @@ export default function AllContacts() {
     <section>
       <Favorites />
       <div>
-        <h1>All Contacts ({loadedContacts.length})</h1>
+        <h1 className="center primary-color">
+          All Contacts ({loadedContacts.length})
+        </h1>
 
         <ContactsList contacts={loadedContacts} />
       </div>

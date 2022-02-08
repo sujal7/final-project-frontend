@@ -9,7 +9,6 @@ import { useState } from 'react';
 export default function AddContacts() {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
-  const [url, setUrl] = useState('');
 
   function addContactsHandler(formData, file) {
     const sotrageRef = ref(storage, `files/${file.name}`);
@@ -27,8 +26,6 @@ export default function AddContacts() {
         (error) => console.log(error),
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log('File available at', downloadURL);
-            setUrl(downloadURL);
             resolve(downloadURL);
           });
         }
@@ -37,7 +34,6 @@ export default function AddContacts() {
 
     promise.then((downloadURL) => {
       formData.photo = downloadURL;
-      console.log(downloadURL);
       fetch('http://localhost:5000/contacts', {
         method: 'POST',
         body: JSON.stringify(formData),
@@ -57,7 +53,7 @@ export default function AddContacts() {
 
   return (
     <section>
-      <h1>Add New Contact</h1>
+      <h1 className="center primary-color">Add New Contact</h1>
       <AddContactForm onAddContacts={addContactsHandler} />
     </section>
   );

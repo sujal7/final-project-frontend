@@ -44,6 +44,11 @@
   border-color: #a50e48;
 }
 
+.actions button:focus {
+  background-color: gray;
+  border-color: black;
+}
+
 .control label span {
   color: red;
 }

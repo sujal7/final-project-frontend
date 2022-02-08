@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Card from '../common/ui/Card';
 
@@ -10,6 +11,8 @@ export default function AddContactForm(props) {
   const workNumberInputRef = useRef();
   const homeNumberInputRef = useRef();
   const emailInputRef = useRef();
+
+  const location = useLocation();
 
   function submitHandler(event) {
     event.preventDefault();
@@ -46,21 +49,38 @@ export default function AddContactForm(props) {
           <label htmlFor="name">
             Name <span>*</span>
           </label>
-          <input type="text" required id="name" ref={nameInputRef} />
+          <input
+            type="text"
+            required
+            id="name"
+            ref={nameInputRef}
+            defaultValue={props.isEdit ? location.state.name : ''}
+          />
         </div>
 
         <div className={classes.control}>
           <label htmlFor="photo">
             Photo <span>*</span>
           </label>
-          <input type="file" required id="photo" />
+          <input
+            type="file"
+            required
+            id="photo"
+            accept="image/png, image/jpeg"
+          />
         </div>
 
         <div className={classes.control}>
           <label htmlFor="address">
             Address <span>*</span>
           </label>
-          <input type="text" required id="address" ref={addressInputRef} />
+          <input
+            type="text"
+            required
+            id="address"
+            ref={addressInputRef}
+            defaultValue={props.isEdit ? location.state.address : ''}
+          />
         </div>
         <div className={classes.control}>
           <label htmlFor="mobileNumber">
@@ -71,21 +91,38 @@ export default function AddContactForm(props) {
             required
             id="mobileNumber"
             ref={mobileNumberInputRef}
+            defaultValue={props.isEdit ? location.state.mobileNumber : ''}
           />
         </div>
         <div className={classes.control}>
           <label htmlFor="workNumber">Work Number</label>
-          <input type="number" id="workNumber" ref={workNumberInputRef} />
+          <input
+            type="number"
+            id="workNumber"
+            ref={workNumberInputRef}
+            defaultValue={props.isEdit ? location.state.workNumber : ''}
+          />
         </div>
         <div className={classes.control}>
           <label htmlFor="homeNumber">Home Number</label>
-          <input type="number" id="homeNumber" ref={homeNumberInputRef} />
+          <input
+            type="number"
+            id="homeNumber"
+            ref={homeNumberInputRef}
+            defaultValue={props.isEdit ? location.state.homeNumber : ''}
+          />
         </div>
         <div className={classes.control}>
           <label htmlFor="email">
             Email <span>*</span>
           </label>
-          <input type="email" required id="email" ref={emailInputRef} />
+          <input
+            type="email"
+            required
+            id="email"
+            ref={emailInputRef}
+            defaultValue={props.isEdit ? location.state.email : ''}
+          />
         </div>
         <div className={classes.actions}>
           {props.isEdit ? (
