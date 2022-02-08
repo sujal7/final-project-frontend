@@ -38,6 +38,28 @@ export default function ContactItem(props) {
     });
   }
 
+  function isFavorite(id) {
+    return favorites.some((favorite) => favorite._id === id);
+  }
+
+  function removeFavoriteHandler() {
+    dispatch({
+      type: 'REMOVE_FAVORITE',
+      payload: {
+        _id: props.id,
+        name: props.name,
+        photo: props.photo,
+        phone: {
+          mobileNumber: props.mobileNumber,
+          workNumber: props.workNumber,
+          homeNumber: props.homeNumber,
+        },
+        address: props.address,
+        email: props.email,
+      },
+    });
+  }
+
   return (
     <li className={classes.item}>
       <Card>
@@ -51,7 +73,11 @@ export default function ContactItem(props) {
           <p>{props.email}</p>
         </div>
         <div className={classes.actions}>
-          <button onClick={addFavoriteHandler}>Favorite</button>
+          {isFavorite(props.id) ? (
+            <button onClick={removeFavoriteHandler}>Remove Favorite</button>
+          ) : (
+            <button onClick={addFavoriteHandler}>Favorite</button>
+          )}
           <button onClick={editHandler}>Edit</button>
           <button onClick={deleteHandler}>Delete</button>
         </div>

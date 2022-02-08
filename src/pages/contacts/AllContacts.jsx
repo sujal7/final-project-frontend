@@ -35,7 +35,7 @@ export default function AllContacts() {
     <section>
       <Favorites />
       <div>
-        <h1>All Contacts</h1>
+        <h1>All Contacts ({loadedContacts.length})</h1>
 
         <ContactsList contacts={loadedContacts} />
       </div>
