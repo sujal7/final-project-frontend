@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactsList from '../../components/contacts/ContactsList';
+import Favorites from './Favorites';
 
 export default function AllContacts() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,9 +33,12 @@ export default function AllContacts() {
 
   return (
     <section>
-      <h1>All Contacts</h1>
+      <Favorites />
+      <div>
+        <h1>All Contacts</h1>
 
-      <ContactsList contacts={loadedContacts} />
+        <ContactsList contacts={loadedContacts} />
+      </div>
     </section>
   );
 }

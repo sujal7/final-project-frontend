@@ -3,9 +3,13 @@ import React from 'react';
 import Card from '../common/ui/Card';
 import classes from './ContactItem.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ContactItem(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites);
+
   function deleteHandler() {
     navigate(`/delete-contacts/${props.id}`, { replace: true });
   }
@@ -13,6 +17,24 @@ export default function ContactItem(props) {
   function editHandler() {
     navigate(`/edit-contacts/${props.id}`, {
       replace: true,
+    });
+  }
+
+  function addFavoriteHandler() {
+    dispatch({
+      type: 'ADD_FAVORITE',
+      payload: {
+        _id: props.id,
+        name: props.name,
+        photo: props.photo,
+        phone: {
+          mobileNumber: props.mobileNumber,
+          workNumber: props.workNumber,
+          homeNumber: props.homeNumber,
+        },
+        address: props.address,
+        email: props.email,
+      },
     });
   }
 
@@ -29,7 +51,7 @@ export default function ContactItem(props) {
           <p>{props.email}</p>
         </div>
         <div className={classes.actions}>
-          <button>Favorite</button>
+          <button onClick={addFavoriteHandler}>Favorite</button>
           <button onClick={editHandler}>Edit</button>
           <button onClick={deleteHandler}>Delete</button>
         </div>
