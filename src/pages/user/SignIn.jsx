@@ -1,11 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import UserForm from '../../components/common/user/UserForm';
 
 export default function SignIn() {
   const navigate = useNavigate();
 
-  function addSignUpHandler(formData) {
+  const dispatch = useDispatch();
+
+  function addSignInHandler(formData) {
     fetch('http://localhost:5000/signin', {
       method: 'POST',
       body: JSON.stringify(formData),
@@ -18,6 +22,9 @@ export default function SignIn() {
         localStorage.setItem('token', resData.token);
       })
       .then(() => {
+        dispatch({ type: 'LOGIN' });
+      })
+      .then(() => {
         navigate('/contacts', { replace: true });
       })
       .catch((error) => {
@@ -27,7 +34,7 @@ export default function SignIn() {
 
   return (
     <section>
-      <UserForm onSubmit={addSignUpHandler} type="Sign In" />
+      <UserForm onSubmit={addSignInHandler} type="Sign In" />
     </section>
   );
 }
