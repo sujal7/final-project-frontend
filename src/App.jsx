@@ -10,28 +10,32 @@ import AddContacts from './pages/contacts/AddContacts';
 import DeleteContacts from './pages/contacts/DeleteContacts';
 import EditContacts from './pages/contacts/EditContacts';
 import SignOut from './pages/user/SignOut';
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
 
 function App() {
   const isAuth = useSelector((state) => state.isAuth);
   return (
     <div>
       <Layout>
-        {isAuth ? (
-          <Routes>
-            <Route path="/contacts" element={<AllContacts />} />
-            <Route path="/add-contacts" element={<AddContacts />} />
-            <Route path="/delete-contacts/:id" element={<DeleteContacts />} />
-            <Route path="/edit-contacts/:id" element={<EditContacts />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signout" element={<SignOut />} />
-          </Routes>
-        ) : (
-          <Routes>
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signout" element={<SignOut />} />
-          </Routes>
-        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signout" element={<SignOut />} />
+          {isAuth ? (
+            <>
+              <Route path="/contacts" element={<AllContacts />} />
+              <Route path="/add-contacts" element={<AddContacts />} />
+              <Route path="/delete-contacts/:id" element={<DeleteContacts />} />
+              <Route path="/edit-contacts/:id" element={<EditContacts />} />
+            </>
+          ) : (
+            <>
+              <Route path="/signup" element={<SignUp />} />
+            </>
+          )}
+        </Routes>
       </Layout>
     </div>
   );
