@@ -2,18 +2,27 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserForm from '../../components/common/user/UserForm';
 
-export default function SignUp(props) {
+/**
+ *
+ * @returns {JSX.Element} - The signup page.
+ */
+export default function SignUp() {
   const navigate = useNavigate();
 
+  /**
+   *
+   * Sends the signup request to the server.
+   * @param {Object} formData - The form data in JSON format.
+   */
   function addSignUpHandler(formData) {
     fetch('http://localhost:5000/signup', {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {
-        // we pass authorization tokens in header
         'Content-Type': 'application/json',
       },
     })
+      // Navigate to the signin page.
       .then(() => {
         navigate('/signin', { replace: true });
       })

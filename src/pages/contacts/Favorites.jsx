@@ -1,9 +1,16 @@
 import { useSelector } from 'react-redux';
 import ContactsList from '../../components/contacts/ContactsList';
 
+/**
+ *
+ * @returns {JSX.Element} - The page where all the favorite contacts are displayed.
+ */
 export default function Favorites() {
+  // Gets the favorite contacts from the state.
   const favorites = useSelector((state) => state.favorites);
   let content;
+
+  // If there are no favorite contacts, displays a message.
   if (favorites.length === 0)
     content = (
       <p className="center">
@@ -11,6 +18,7 @@ export default function Favorites() {
         favorites.
       </p>
     );
+  // If there are favorite contacts, displays them.
   else content = <ContactsList contacts={favorites} />;
   return (
     <div>

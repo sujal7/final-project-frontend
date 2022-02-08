@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 import UserForm from '../../components/common/user/UserForm';
 
-export default function SignIn(props) {
+/**
+ *
+ * @returns {JSX.Element} - The signin page.
+ */
+export default function SignIn() {
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
 
+  /**
+   *
+   * Sends the signin request to the server.
+   * @param {object} formData - The form data in JSON format.
+   */
   function addSignInHandler(formData) {
     fetch('http://localhost:5000/signin', {
       method: 'POST',
@@ -18,18 +25,22 @@ export default function SignIn(props) {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => {
+        // If the response is not ok, throw an error and set the error message.
         if (res.status !== 200) {
           setErrorMessage('The email address or password is incorrect.');
           throw new Error('The email address or password is incorrect.');
         }
         return res.json();
       })
+      // If the response is ok, set the user's token.
       .then((resData) => {
         localStorage.setItem('token', resData.token);
       })
+      // Dispatch the signin/login action.
       .then(() => {
         dispatch({ type: 'LOGIN' });
       })
+      // Navigate to the contacts page.
       .then(() => {
         navigate('/contacts', { replace: true });
       })

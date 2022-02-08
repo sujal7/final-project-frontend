@@ -1,8 +1,14 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
+/**
+ *
+ * @returns {JSX.Element} - The signed out page.
+ */
 export default function SignOut() {
   const dispatch = useDispatch();
+
+  // Dispatch the signout/logout action.
   dispatch({ type: 'LOGOUT' });
 
   return (

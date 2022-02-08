@@ -2,8 +2,13 @@ import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Card from '../common/ui/Card';
-
 import classes from './AddContactForm.module.css';
+
+/**
+ *
+ * @param {Object} props - The props of the component.
+ * @returns {JSX.Element} - The add contact form component.
+ */
 export default function AddContactForm(props) {
   const nameInputRef = useRef();
   const addressInputRef = useRef();
@@ -11,14 +16,15 @@ export default function AddContactForm(props) {
   const workNumberInputRef = useRef();
   const homeNumberInputRef = useRef();
   const emailInputRef = useRef();
-
   const location = useLocation();
 
+  /**
+   * Handles the submit event of the form.
+   * @param {Object} event - The event object.
+   */
   function submitHandler(event) {
     event.preventDefault();
-
     const file = event.target[1].files[0];
-
     const enteredName = nameInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     const enteredMobileNumber = mobileNumberInputRef.current.value;
@@ -26,6 +32,9 @@ export default function AddContactForm(props) {
     const enteredHomeNumber = homeNumberInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
 
+    /**
+     * Stores the contact details in formData.
+     */
     const formData = {
       name: enteredName,
       address: enteredAddress,
@@ -35,6 +44,8 @@ export default function AddContactForm(props) {
       email: enteredEmail,
     };
 
+    /* Calls the onEditContacts prop function with the formData if requested from edit
+       else it calls the onAddContacts prop function */
     if (props.isEdit) {
       props.onEditContacts(formData, file);
     } else {

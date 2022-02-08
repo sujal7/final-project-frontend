@@ -1,5 +1,7 @@
-import React from 'react';
-
+/**
+ *
+ * @returns {JSX.Element} - The homepage of the app.
+ */
 export default function Home() {
   return (
     <div className="center primary-color">

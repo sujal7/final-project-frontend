@@ -1,21 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import ContactsList from '../../components/contacts/ContactsList';
-import Favorites from './Favorites';
 
+import Favorites from './Favorites';
+import ContactsList from '../../components/contacts/ContactsList';
+
+/**
+ *
+ * @returns {JSX.Element} - The page where all the contacts are displayed.
+ */
 export default function AllContacts() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedContacts, setLoadedContacts] = useState([]);
 
+  /**
+   * Fetches the contacts from the server.
+   */
   useEffect(() => {
     setIsLoading(true);
+
+    // Sends GET request of contacts to the server.
     fetch('http://localhost:5000/contacts', {
       headers: {
+        // Sets the token in the header.
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     })
+      // Converts the response to JSON.
       .then((response) => {
         return response.json();
       })
+      // Sets the contacts in the state.
       .then((data) => {
         const contacts = data;
         setIsLoading(false);
@@ -23,6 +36,7 @@ export default function AllContacts() {
       });
   }, []);
 
+  // Returns the loading page if the contacts are not loaded yet.
   if (isLoading) {
     return (
       <section>
@@ -31,6 +45,7 @@ export default function AllContacts() {
     );
   }
 
+  // Returns the list of contacts.
   return (
     <section>
       <Favorites />

@@ -1,10 +1,15 @@
 import React from 'react';
-
-import Card from '../common/ui/Card';
-import classes from './ContactItem.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Card from '../common/ui/Card';
+import classes from './ContactItem.module.css';
+
+/**
+ *
+ * @param {Object} props - The props of the component.
+ * @returns {JSX.Element} - Each contact item component.
+ */
 export default function ContactItem(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
