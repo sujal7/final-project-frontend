@@ -8,7 +8,9 @@ export default function MainNavigation() {
   const isAuth = useSelector((state) => state.isAuth);
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Contacts Manager</div>
+      <Link to="">
+        <div className={classes.logo}>Contacts Manager</div>
+      </Link>
       <nav>
         <ul>
           {isAuth ? (

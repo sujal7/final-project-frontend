@@ -74,13 +74,22 @@ export default function ContactItem(props) {
         <div className={classes.content}>
           <h3>{props.name}</h3>
           <img src={props.photo} alt="Contacts" />
-          <address>Address: {props.address}</address>
+          <address>
+            <b>Address:</b> {props.address}
+          </address>
           <p>
-            Mobile Number: {props.mobileNumber ? props.mobileNumber : 'N/A'}
+            <b>Mobile Number:</b>{' '}
+            {props.mobileNumber ? props.mobileNumber : 'N/A'}
           </p>
-          <p>Work Number: {props.workNumber ? props.workNumber : 'N/A'}</p>
-          <p>Home Number: {props.homeNumber ? props.homeNumber : 'N/A'}</p>
-          <p>Email: {props.email}</p>
+          <p>
+            <b>Work Number:</b> {props.workNumber ? props.workNumber : 'N/A'}
+          </p>
+          <p>
+            <b>Home Number:</b> {props.homeNumber ? props.homeNumber : 'N/A'}
+          </p>
+          <p>
+            <b>Email:</b> {props.email}
+          </p>
         </div>
         <div className={classes.actions}>
           {isFavorite(props.id) ? (

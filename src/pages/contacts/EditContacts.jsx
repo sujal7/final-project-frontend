@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import AddContactForm from '../../components/contacts/AddContactForm';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
@@ -9,7 +9,6 @@ export default function EditContacts() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [progress, setProgress] = useState(0);
-  const [url, setUrl] = useState('');
 
   function editContactsHandler(formData, file) {
     const sotrageRef = ref(storage, `files/${file.name}`);
@@ -27,7 +26,6 @@ export default function EditContacts() {
         (error) => console.log(error),
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setUrl(downloadURL);
             resolve(downloadURL);
           });
         }

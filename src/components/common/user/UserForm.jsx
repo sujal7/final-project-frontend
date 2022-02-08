@@ -37,6 +37,9 @@ export default function UserForm(props) {
               ref={passwordInputRef}
             />
           </div>
+          <div className="error">
+            {props.errorMessage && props.errorMessage}
+          </div>
 
           <div className={classes.actions}>
             <button>{props.type}</button>

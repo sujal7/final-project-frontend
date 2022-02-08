@@ -11,3 +11,7 @@ body {
 .primary-color {
   color: #77002e;
 }
+
+.error {
+  color: red;
+}

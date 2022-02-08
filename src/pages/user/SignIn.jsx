@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import UserForm from '../../components/common/user/UserForm';
 
-export default function SignIn() {
+export default function SignIn(props) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState('');
 
   function addSignInHandler(formData) {
     fetch('http://localhost:5000/signin', {
@@ -16,6 +18,10 @@ export default function SignIn() {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => {
+        if (res.status !== 200) {
+          setErrorMessage('The email address or password is incorrect.');
+          throw new Error('The email address or password is incorrect.');
+        }
         return res.json();
       })
       .then((resData) => {
@@ -34,7 +40,11 @@ export default function SignIn() {
 
   return (
     <section>
-      <UserForm onSubmit={addSignInHandler} type="Sign In" />
+      <UserForm
+        onSubmit={addSignInHandler}
+        type="Sign In"
+        errorMessage={errorMessage}
+      />
     </section>
   );
 }
