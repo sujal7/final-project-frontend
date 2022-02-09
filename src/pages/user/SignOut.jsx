@@ -12,7 +12,7 @@ export default function SignOut() {
   dispatch({ type: 'LOGOUT' });
 
   return (
-    <h1 className="center">
+    <h1 className="center primary-color">
       You have been signed out.
       <br />
       <Link to="/signin">Click Here </Link>to Sign In
