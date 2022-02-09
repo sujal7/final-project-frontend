@@ -15,10 +15,16 @@ export default function ContactItem(props) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
 
+  /**
+   * This function is used to navigate to the delete contacts page.
+   */
   function deleteHandler() {
     navigate(`/delete-contacts/${props.id}`, { replace: true });
   }
 
+  /**
+   * This function is used to navigate to the edit contacts page along with the payload.
+   */
   function editHandler() {
     navigate(`/edit-contacts/${props.id}`, {
       replace: true,
@@ -33,6 +39,9 @@ export default function ContactItem(props) {
     });
   }
 
+  /**
+   * This function is used to dispatch the action to add the contact to the favorites.
+   */
   function addFavoriteHandler() {
     dispatch({
       type: 'ADD_FAVORITE',
@@ -51,10 +60,18 @@ export default function ContactItem(props) {
     });
   }
 
+  /**
+   *
+   * @param {Number} id - The id of the contact.
+   * @returns {Boolean} - Returns true if the contact is in the favorites.
+   */
   function isFavorite(id) {
     return favorites.some((favorite) => favorite._id === id);
   }
 
+  /**
+   * This function is used to dispatch the action to remove the contact from the favorites.
+   */
   function removeFavoriteHandler() {
     dispatch({
       type: 'REMOVE_FAVORITE',
@@ -97,6 +114,7 @@ export default function ContactItem(props) {
           </p>
         </div>
         <div className={classes.actions}>
+          {/* if a contact is in the favorites, then it will show the remove favorite button and vice versa. */}
           {isFavorite(props.id) ? (
             <button onClick={removeFavoriteHandler}>Unfavorite</button>
           ) : (
